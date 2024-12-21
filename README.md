@@ -2,7 +2,7 @@
 
 ## 1. Service inform
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/03045eb3-ad52-466e-993e-65791c3db2bf/b5a4c5cf-a099-45bf-ba69-6dee8e6f83a3/image.png)
+![image.png](img/sv1.png)
 
 - 뇌 종양의 위치 및 Size를 예측하여 해당 부위에 이상이 생겼을 경우, 나타나는 증상을 알려줌
 - 과거 기록을 바탕으로 소견서 생성해줌
