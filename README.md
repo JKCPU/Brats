@@ -20,7 +20,7 @@
 
 ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/03045eb3-ad52-466e-993e-65791c3db2bf/b26fb9a2-4e17-4903-9d50-96032bf073e2/image.png)
 
-## 4. 각
+## 4. 기술별 workflow
 
 [3D Segmentation](https://www.notion.so/3D-Segmentation-162c4cba74ea809184d7d40e0fd3ff51?pvs=21)
 
