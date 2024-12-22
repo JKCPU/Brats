@@ -10,7 +10,7 @@
 
 ## 2. Service Pipeline
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/03045eb3-ad52-466e-993e-65791c3db2bf/67eb3676-c345-40e6-af33-2d657b61310f/image.png)
+![image.png](img/sv2.png)
 
 - Segmentation : 종양의 3D img & 위치 및 Size 출력
 - Rag : Segmentation 에서 위치 및 Size data를 받아 Neurology PDF에서 찾음 → 증상출력
@@ -18,20 +18,20 @@
 
 ## 3. Service output
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/03045eb3-ad52-466e-993e-65791c3db2bf/b26fb9a2-4e17-4903-9d50-96032bf073e2/image.png)
+![image.png](img/sv3.png)
 
 ## 4. 기술별 workflow
 
-[3D Segmentation](https://www.notion.so/3D-Segmentation-162c4cba74ea809184d7d40e0fd3ff51?pvs=21)
+[3D Segmentation]()
 
-[Rag](https://www.notion.so/Rag-162c4cba74ea809aa02bfc3cc8d7069e?pvs=21)
+[Rag]()
 
-[LLM](https://www.notion.so/LLM-162c4cba74ea80488745d9b4d9eab264?pvs=21)
+[LLM]()
 
 ## 5. Tech & Member
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/03045eb3-ad52-466e-993e-65791c3db2bf/ebb5ec44-f02d-44c8-9b5a-8a7d26d26727/image.png)
+![image.png](img/sv5_1.png)
 
 ## Time line
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/03045eb3-ad52-466e-993e-65791c3db2bf/0c6fffbd-f475-47ec-b2ed-0962a902af43/image.png)
+![image.png](img/sv5_2.png)
