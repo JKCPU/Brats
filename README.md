@@ -22,7 +22,7 @@
 
 ## 4. 기술별 workflow
 
-[3D Segmentation](./3D segmentation.md)
+[3D Segmentation](./3D%20segmentation.md)
 
 [Rag]()
 

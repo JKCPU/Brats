@@ -55,7 +55,7 @@ DiceLoss → Focal Tversky Loss
 
 # 5. Model (Unet3D → SwinUNETR)
 
-[Swin UNETR](img/3d5_1.png)
+![Swin UNETR](img/3d5_1.png)
 
 ### **Swin UNETR란?**
 
@@ -94,8 +94,6 @@ DiceLoss → Focal Tversky Loss
 
 [AFFIN Transform Result](img/3d7_1.png)
 
-- 위 자료를 이해하기 쉽게 표현해봄
-
 ![image.png](img/3d7_2.png)
 
 - Label을 100%로 가정했을 때, Unet3D 는 Label data보다 약 75% 크게 예측함
@@ -110,4 +108,4 @@ DiceLoss → Focal Tversky Loss
         
     - SwinUNETR은 Focal - Tversky loss 적용하지 못함(시간부족)
 
-[Failure](https://www.notion.so/Failure-163c4cba74ea80868172d4f24a21215f?pvs=21)
+[Failure](img/3d8.png)
