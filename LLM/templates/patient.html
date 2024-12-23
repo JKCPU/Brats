@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <!-- Bootstrap 5.3.0 CSS CDN 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 전체 화면 사이즈 고정 */
+        body, html {
+            width: 1680px;
+            height: 100%; /* 콘텐츠에 맞게 높이 조정 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar 고정 설정 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* 다른 콘텐츠보다 위에 위치하도록 */
+        }
+
+        /* 좌측 이미지 영역 스타일 */
+        .left-image {
+            background-image: url('https://cdn.imweb.me/upload/S201811235bf76851d945f/5c18ae8bce7c0.png');
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            border-right: 3px solid #ccc; /* 오른쪽 경계선 */
+        }
+
+        /* 우측 컬럼의 콘텐츠 영역 */
+        .right-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* 환자 정보 영역 */
+        .patient-info {
+            height: 20%; /* 상단 2/10 비율 */
+            background-color: white;
+            padding: 10px;
+            border-bottom: 3px solid #ccc;
+            overflow-y: auto; /* 스크롤 추가 */
+        }
+
+        /* Reference Section 영역 */
+        .reference-section {
+            height: 40%; /* 중간 4/10 비율 */
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #ccc;
+            overflow-y: auto; /* 스크롤 추가 */
+        }
+
+        /* Medical Letter 영역 */
+        .medical-letter {
+            height: 40%; /* 하단 4/10 비율 */
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 내용 정렬 */
+        }
+
+        /* Flexbox로 좌측과 우측 나누기 */
+        .container-fluid {
+            display: flex;
+            height: calc(100vh - 70px); /* Navbar를 제외한 전체 화면 높이 */
+            margin-top: 70px; /* 고정된 navbar를 고려하여 여백 추가 */
+            padding-bottom: 50px; /* footer와 겹치지 않도록 여백 추가 */
+        }
+
+        /* 좌측과 우측 비율 */
+        .left-col {
+            flex: 5; /* 50% 비율 */
+            background-color: #f0f0f0; /* 좌측 영역 배경 */
+        }
+
+        .right-col {
+            flex: 5; /* 50% 비율 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 텍스트 영역에 대한 스타일 */
+        textarea {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: none; /* 크기 조절 불가 */
+            overflow-y: auto; /* 오직 textarea에만 스크롤 */
+        }
+
+        /* Copyright 스타일 */
+        .footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 999; /* 다른 콘텐츠 위에 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">목록보기</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">관련기록 불러오기</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">소견서 재생성</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-danger text-white ms-2" href="#">저장 및 출력</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <!-- Left Column: 50% 비율 - Background Image -->
+        <div class="left-col">
+            <div class="left-image"></div>
+        </div>
+
+        <!-- Right Column: 50% 비율 -->
+        <div class="right-col">
+            <!-- Patient Info Section (Top 20%) -->
+            <div class="patient-info">
+                <table class="table table-bordered mb-0">
+                    <tr>
+                        <td><strong>환자 이름</strong></td>
+                        <td><strong>환자 코드</strong></td>
+                        <td><strong>성별</strong></td>
+                        <td><strong>나이</strong></td>
+                        <td><strong>최근 방문일</strong></td>
+                    </tr>
+                    <tr>
+                        <td>홍길동</td>
+                        <td>123456</td>
+                        <td>남성</td>
+                        <td>35</td>
+                        <td>2024-11-14</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Reference Section (Middle 40%) -->
+            <div class="reference-section">
+                <h5>Reference</h5>
+                <p>뇌종양이란 뇌 조직이나 뇌를 싸고 있는 막에서 발생한 종양과, 머리뼈나 주변 구조물로부터 멀리 떨어진 부위에서 뇌 조직이나 뇌막으로 전이된 종양을 의미합니다. 뇌종양은 양성과 악성으로 나눌 수 있습니다. 양성 뇌종양은 성장 속도가 느리며 주위 조직과의 경계가 뚜렷합니다. 양성 뇌종양은 성장 속도가 느리며 주위 조직과의 경계가 뚜렷합니다. 양성 뇌종양은 성장 속도가 느리며 주위 조직과의 경계가 뚜렷합니다.</p>
+            </div>
+
+            <!-- Medical Letter Section (Bottom 40%) -->
+            <div class="medical-letter">
+                <h5>Clinical Letter</h5>
+                <textarea placeholder="Enter your clinical letter here...">
+The patient, who tested positive for COVID-19 and was admitted to the ICU due to oxygen desaturation of 70%, experienced worsening tachypnea and dyspnea. Physical therapy was initiated immediately after ICU admission, and the patient achieved a 135° prone position and increased oxygen saturation from 88% to 96% through deep-breathing exercises. Intensive physical therapy and positioning were continued along with oxygen therapy (6 to 12 L/min), and intubation was avoided. After 3 days, the patient was transferred to the normal ward for continued rehabilitation, including walking and strength training. Despite severe instability, the patient was able to leave the hospital as a pedestrian 9 days post-ICU admission. The treatment plan included physical therapy, oxygen therapy, and careful monitoring to ensure safe implementation at an individually adapted pace.
+                </textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Footer -->
+    <div class="footer">
+        <!-- <p>문의: wlsflcnrn123@gmail.com</p> -->
+        <p>&copy; 2024 Alpaco. All rights reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
