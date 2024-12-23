@@ -2,36 +2,16 @@
 
 ## 1. Service inform
 
-![image.png](img/sv1.png)
+![image.png](img/rag.png)
 
-- 뇌 종양의 위치 및 Size를 예측하여 해당 부위에 이상이 생겼을 경우, 나타나는 증상을 알려줌
-- 과거 기록을 바탕으로 소견서 생성해줌
-- 두 가지 기능을 종합, web으로 구현하여 Service를 제공
-
-## 2. Service Pipeline
-
-![image.png](img/sv2.png)
-
-- Segmentation : 종양의 3D img & 위치 및 Size 출력
-- Rag : Segmentation 에서 위치 및 Size data를 받아 Neurology PDF에서 찾음 → 증상출력
-- LLM : 과거 진단기록 요약하여 소견서 생성
-
-## 3. Service output
-
-![image.png](img/sv3.png)
-
-## 4. 기술별 workflow
-
-[3D Segmentation]()
-
-[Rag]()
-
-[LLM]()
-
-## 5. Tech & Member
-
-![image.png](img/sv5_1.png)
-
-## Time line
-
-![image.png](img/sv5_2.png)
+- 목적 : 3D segmentation 의 predict 결과물에서 종양이 있을 때 증상 출력
+- Workflow
+    - Neurology PDF를 vector화 하여 SQL DB에 저장
+    - 3D Segmentation 의 output(종양 위치 및 size)를 받음
+    - Ollima 를 사용하여  해당 병변 의 증상 출력
+- SQ Lite → PostgreSQL (RAG 성능 UP 위하여 변경)
+    - vecotor화 시킬 때 embedding model 변경
+        
+        all-MiniLLM-L6-v2(384dim) → all mpnet-base-v2(768dim)
+        
+    - PstagreSQL 은 vector DB처리 시 PG Vector사용
