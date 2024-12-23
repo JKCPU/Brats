@@ -24,9 +24,9 @@
 
 [3D Segmentation](./3D%20segmentation.md)
 
-[Rag]()
+[Rag](./Rag.md)
 
-[LLM]()
+[LLM](./LLM.md)
 
 ## 5. Tech & Member
 
