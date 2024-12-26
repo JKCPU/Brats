@@ -4,19 +4,19 @@
 
 # 1. Dataset : BraTS(Brain Tumor Segmentation)2021
 
-- MRI 3D img file(.nii) 로 약 1600명의 환자가 있음
-- 촬영기법은 T1, T2, Flair가 있음
+- MRI 3D img file(.nii) : 약 1600명의 환자 img
+- 촬영 기법 : T1, T2, Flair가 있음
 - 각 촬영기법의 특징:
-    - **T1 :** 해부학적 구조를 잘 보여주며, 지방조직이 밝게 나타나고 물은 어둡게 나타남
-    - **T2 :** 병변이나 부종을 잘 보여주며, 물이 밝고 지방조직은 중간 정도의 신호강도를 보임
+    - **T1 :** 해부학적 구조 명확, 지방조직이 밝음 물은 어둡게 나타남
+    - **T2 :** 병변이나 부종 잘 보여줌, 물이 밝음 지방 조직은 중간 정도의 신호 강도
     - **FLAIR :** 뇌척수액의 신호를 억제, 뇌실주변의 병변을 더 명확하게 보여주는 특수 촬영기법
     
     ![image.png](img/3d1_1.png)
     
 - Lable 은 총 3가지
     - Enhancing Tumor, Tumor Core, Whole Tumor
-    - 암이 얼마나 진행 정도에 따른 분류임
-    - 현재 Project에서 Label은  종양의 유무만 판단함(multi-label로 진행 시, 성능이 너무 안나옴)
+    - 암 진행 정도에 따른 분류
+    - 현재 Project에서 Label은  종양 유무만 판단(multi-label로 진행 시, 성능 저조)
 
 ![image.png](img/3d1_2.png)
 
@@ -84,9 +84,9 @@ DiceLoss → Focal Tversky Loss
 
 # 6. AFFINE (Automated Anatomical Labeling사용)
 
-- **Affine 변환**은 뇌 영상 데이터를 **표준 좌표계**에 맞추기 위한 변환 방법입니다.
+- **Affine 변환**은 뇌 영상 데이터를 **표준 좌표계**에 맞추기 위한 변환 방법.
 - **AAL**: 뇌를 여러 해부학적 영역으로 나눈 지도
-- **Affine 변환**: 개별 뇌 영상 데이터를 회전, 이동, 크기 조정 등을 통해 이 표준 지도(AAL 템플릿)와 맞추는 과정입니다. 즉, 환자의 뇌 영상을 AAL 템플릿과 정렬해 **비교하거나 분석하기 쉽게 만드는 과정**입니다. 쉽게 말해, **뇌 사진을 표준 지도에 맞게 위치와 크기를 조정**한다고 생각하면 됨.
+- **Affine 변환**: 개별 뇌 영상 데이터를 회전, 이동, 크기 조정 등을 통해 이 표준 지도(AAL 템플릿)와 맞추는 과정임. 즉, 환자의 뇌 영상을 AAL 템플릿과 정렬해 **비교하거나 분석하기 쉽게 만드는 과정**. 쉽게 말해, **뇌 사진을 표준 지도에 맞게 위치와 크기를 조정**한다고 생각하면 됨.
 
 ![image.png](img/3d6.png)
 
@@ -98,14 +98,14 @@ DiceLoss → Focal Tversky Loss
 
 - Label을 100%로 가정했을 때, Unet3D 는 Label data보다 약 75% 크게 예측함
 - SwinUNETR은 약 10% 정도 크게 예측함
-- 두가지 결론을 도출해 볼 수 있음
-    - Swin UNETR의 model 에서 pool 단계에서 transformer가 들어가서 더욱 정교하게 예측한거라 사료됨
-    - Unet3D의 loss 값이 Dice가 아닌 Focal-Tversky loss값을 사용함 (Swin UNETR은 Dice적용)
+- 결론 도출
+    - Swin UNETR의 model의 pool 단계에서 transformer가 들어가 더욱 정교하게 예측한 것으로 판단됨
+    - Unet3D은 Dice가 아닌 Focal-Tversky loss값을 사용함 (Swin UNETR은 Dice적용)
         
-        Focal - Tversky loss 가 작은객체를 탐지할 떄 더욱 큰 가중치를 부여하는 loss값임.
+        Focal - Tversky loss 가 작은객체를 탐지할 떄 더욱 큰 가중치를 부여하는 손실함수임.
         
-        때문에 종양이 더 크게 잡히지 않았나 사료됨
+        따라서 종양이 더 크게 잡히지 않았나 사료됨
         
-    - SwinUNETR은 Focal - Tversky loss 적용하지 못함(시간부족)
+        - 아쉬운점 : SwinUNETR은 Focal - Tversky loss 적용하지 못함(시간부족)
 
 [Failure](img/3d8.png)
